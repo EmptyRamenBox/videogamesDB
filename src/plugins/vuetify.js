@@ -7,6 +7,18 @@ Vue.use(Vuetify);
 // Vuetify 2.0
 // Custom Color Scheme
 const vuetify = new Vuetify({
+  breakpoint: {
+    // Conditionals
+    xsOnly: true,
+
+    thresholds: {
+      xs: 340,
+      sm: 540,
+      md: 800,
+      lg: 1280
+    },
+    scrollBarWidth: 24
+  },
   theme: {
     themes: {
       light: {

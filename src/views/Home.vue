@@ -1,15 +1,19 @@
 <template>
-  <v-container d-flex flex height="100%">
+  <v-container>
     <!-- Example 1 -->
     <v-col cols="12" height="100%">
       <v-row class="mb-6" justify="center" no-gutters>
-        <v-col lg="2">
+        <v-col sm="auto" height="100%">
           <v-card class="pa-2" outlined tile>1 of 3</v-card>
         </v-col>
-        <v-col md="auto">
-          <v-card class="pa-2" outlined tile>Variable width content</v-card>
+        <v-col lg="auto" height="100%">
+          <v-card class="m-0 p-0" outlined tile
+            ><v-card-title class="justify-center display-1"
+              >Home</v-card-title
+            ></v-card
+          >
         </v-col>
-        <v-col lg="2">
+        <v-col sm="auto" height="100%">
           <v-card class="pa-2" outlined tile>3 of 3</v-card>
         </v-col>
       </v-row>
@@ -17,7 +21,7 @@
       <v-flex>
         <v-row no-gutters>
           <v-col>
-            <v-card height="100%" class="pa-2" outlined tile>1 of 3</v-card>
+            <v-card class="pa-2" outlined tile>1 of 3</v-card>
           </v-col>
           <v-col md="auto">
             <v-card class="pa-2" outlined tile>Variable width content</v-card>

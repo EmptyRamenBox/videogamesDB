@@ -1,6 +1,11 @@
 <template>
   <v-navigation-drawer :value="drawer" app clipped>
     <v-list class="dense">
+      <v-spacer></v-spacer>
+      <v-list-item class="justify-end">
+        <!-- Enable this for devices with small viewports... -->
+        <v-icon large @click="drawer ? hideDrawer() : drawer">mdi-arrow-collapse-left</v-icon>
+      </v-list-item>
       <v-list-item justify="center">
         <div class="d-flex flex-column justify-center mb-8">
           <div class="pt-4">
@@ -13,28 +18,6 @@
           <v-btn color="red darken-3">LogOut</v-btn>
         </div>
       </v-list-item>
-      <v-list-item v-for="item in items" :key="item.text" link>
-        <v-list-item-action>
-          <v-icon>{{ item.icon }}</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title>{{ item.text }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-      <v-subheader class="mt-4 grey--text text--darken-1">FRIENDS</v-subheader>
-      <v-list>
-        <v-list-item v-for="item in items2" :key="item.text" link>
-          <v-list-item-avatar>
-            <img
-              :src="
-                `https://randomuser.me/api/portraits/men/${item.picture}.jpg`
-              "
-              alt
-            />
-          </v-list-item-avatar>
-          <v-list-item-title v-text="item.text" />
-        </v-list-item>
-      </v-list>
     </v-list>
   </v-navigation-drawer>
 </template>
@@ -46,26 +29,15 @@ import defaultPicture from "../assets/logo.png";
 export default {
   name: "Drawer",
   data: () => ({
-    defaultPicture,
-    items: [
-      { icon: "mdi-compass", text: "Explore Games" },
-      { icon: "mdi-book-multiple", text: "Your Library" },
-      { icon: "mdi-history", text: "History" },
-      { icon: "mdi-playlist-star", text: "Wishlist" }
-    ],
-    items2: [
-      { picture: 28, text: "Joseph" },
-      { picture: 38, text: "Apple" },
-      { picture: 48, text: "Xbox Ahoy" },
-      { picture: 58, text: "Nokia" },
-      { picture: 78, text: "MKBHD" }
-    ]
+    defaultPicture
   }),
   computed: {
     ...mapGetters({
       drawer: "getDrawer"
     })
   },
-  ...mapActions(["hideDrawer"])
+  methods: {
+    ...mapActions(["hideDrawer"])
+  }
 };
 </script>
