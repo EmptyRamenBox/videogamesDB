@@ -1,4 +1,7 @@
 <template>
+  <!-- VueComponent:  Drawer.vue -->
+  <!-- consists of a Vuetify component, that will be used to hold the navigation drawer -->
+  <!-- when the user clicks on the navigation drawer icon. -->
   <v-navigation-drawer :value="drawer" app clipped>
     <v-list class="dense">
       <v-spacer></v-spacer>
@@ -12,7 +15,7 @@
       <div class="d-flex flex-column justify-center align-center mb-4">
         <v-list-item justify="center">
           <v-list-item-avatar size="160" color="red darken-4">
-            <img :src="defaultPicture" alt="Profile Pic" />
+            <v-icon md>mdi-space-invaders</v-icon>
           </v-list-item-avatar>
         </v-list-item>
       </div>
