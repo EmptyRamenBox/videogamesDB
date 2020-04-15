@@ -2,7 +2,7 @@
   <v-app :style="{ background: $vuetify.theme.themes[theme].background }">
     <NavBar class="secondary--text" app />
     <Drawer />
-    <v-content>
+    <v-content app>
       <v-container fluid class="white--text">
         <router-view></router-view>
       </v-container>
