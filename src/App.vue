@@ -1,9 +1,11 @@
 <template>
   <v-app :style="{ background: $vuetify.theme.themes[theme].background }">
-    <NavBar class="secondary--text" />
+    <NavBar class="secondary--text" app />
     <Drawer />
-    <v-content class="white--text">
-      <router-view></router-view>
+    <v-content>
+      <v-container fluid class="white--text">
+        <router-view></router-view>
+      </v-container>
     </v-content>
   </v-app>
 </template>
