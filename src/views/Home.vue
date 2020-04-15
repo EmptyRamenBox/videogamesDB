@@ -1,58 +1,64 @@
 <template>
-  <v-container>
-    <!-- Example 1 -->
-    <v-col cols="12" height="100%">
-      <v-row class="mb-6" justify="center" no-gutters>
-        <v-col sm="auto" height="100%">
-          <v-card class="pa-2" outlined tile>1 of 3</v-card>
+  <!-- Home.vue -->
+  <!-- This view will allows users to see the home page, which involves-->
+  <!-- the ExploreGames section, where users can explore new games randomly -->
+  <!-- brought in from using API.-->
+  <!--  -->
+  <!-- The entire Home page is constrained to the Vuetify grid of 12 rows  -->
+  <v-col cols="12" fluid class="mt-8">
+    <!-- Row #01 -->
+    <!-- Title -->
+    <!--  -->
+    <v-parallax
+      color="rgba(255,0,0, 0.8)"
+      src="../assets/home.png"
+      height="300"
+      width="1800"
+      jumbotron
+    >
+      <v-row class="mb-6" justify="center" wrap>
+        <v-col cols="12" xs="3" md="1">
+          <!-- Spacing - Row#01 - Col#01 -->
         </v-col>
-        <v-col lg="auto" height="100%">
-          <v-card class="m-0 p-0" outlined tile
-            ><v-card-title class="justify-center display-1"
-              >Home</v-card-title
-            ></v-card
-          >
+        <v-col column wrap cols="12" xs="6" md="9" lg="6">
+          <v-card color="primary" class="m-0 pt-6 pb-2">
+            <v-card-title class="justify-center display-3">Home</v-card-title>
+          </v-card>
         </v-col>
-        <v-col sm="auto" height="100%">
-          <v-card class="pa-2" outlined tile>3 of 3</v-card>
+        <v-col cols="12" xs="3" md="1">
+          <!-- Spacing - Row#01 - Col#03 -->
         </v-col>
       </v-row>
-      <!-- Example 2 -->
-      <v-flex>
-        <v-row no-gutters>
-          <v-col>
-            <v-card class="pa-2" outlined tile>1 of 3</v-card>
-          </v-col>
-          <v-col md="auto">
-            <v-card class="pa-2" outlined tile>Variable width content</v-card>
-          </v-col>
-          <v-col lg="2">
-            <v-card class="pa-2" outlined tile>3 of 3</v-card>
-          </v-col>
-        </v-row>
-      </v-flex>
-    </v-col>
-    <!-- Sample 1 -->
-    <!-- <v-row v-for="n in 3" :key="n" cols="12" sm="6" no-gutters>
-      <v-col v-for="n in 12" :key="n" cols="12" xs="6" sm="4" md="3" no-gutters>
-        <v-col no-gutters>
-          <v-card class="pas-2" outlined="tile" no-gutters>Hello</v-card>
-        </v-col>
+      <!-- Row #02 -->
+      <!-- Spacing -->
+      <!--  -->
+      <v-row justify-center class="mt-10"></v-row>
+      <!-- Row #03 -->
+      <!-- ExploreGames Header -->
+      <!--  -->
+      <v-row justify="space-around" class="title">
+        <h2>Explore Games</h2>
+      </v-row>
+    </v-parallax>
+
+    <!-- Row #04 -->
+    <!-- ExploreGames GameCards -->
+    <!--  -->
+    <v-row rows="1" justify-center class="mt-10">
+      <v-col v-for="n in 8" :key="n" cols="12" xs="12" sm="6" md="3">
+        <GameCard />
       </v-col>
-    </v-row>-->
-    <!-- Sample 2 -->
-    <!-- <v-row no-gutters>
-      <v-col v-for="n in 12" :key="n" cols="12" sm="4">
-        <v-card class="pa-2" outlined tile>One of three columns</v-card>
-      </v-col>
-    </v-row>-->
-  </v-container>
+    </v-row>
+  </v-col>
 </template>
 
 <script>
-// @ is an alias to /src
+import GameCard from "@/components/GameCard.vue";
 
 export default {
-  name: "Home"
+  name: "Home",
+  components: {
+    GameCard
+  }
 };
 </script>
