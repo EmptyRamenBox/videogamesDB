@@ -1,9 +1,8 @@
 <template>
-  <v-app-bar dense clipped-left color="primary" max-height="45" fluid class="body-1">
+  <v-app-bar dense clipped-left app color="primary" max-height="45" fluid class="body-1">
     <!-- Left Side -->
     <!--  -->
     <!--  -->
-    <!-- <v-col cols="2" justify="start" xs="2" sm="1" md="1" no-gutters> -->
     <!-- Navigation Drawer -->
     <!-- -->
     <!--  -->
