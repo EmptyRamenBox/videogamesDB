@@ -78,7 +78,7 @@ export default {
   // because it would have thrown off the css of the Search page.
   computed: {
     // searchItem
-    // performs 2-way binding to from the searchItem to store, and vice versa
+    // performs 2-way binding to for the searchItem to store, and vice versa
     searchItem: {
       get() {
         return this.$store.getters.getSearch;
@@ -87,6 +87,8 @@ export default {
         this.$store.dispatch("newSearchAction", value);
       }
     },
+    // games
+    // performs 2-way binding for the games list
     games: {
       get() {
         return this.$store.getters.getGames;
@@ -95,6 +97,9 @@ export default {
         return this.$store.dispatch("setGames", value);
       }
     },
+    // notFound
+    // performs 2-way binding for the state whether a search
+    // result was returned
     notFound() {
       return this.$store.getters.getNotFound;
     }
