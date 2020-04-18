@@ -36,7 +36,8 @@ export default new Vuex.Store({
   },
   actions: {
     // Games actions (Global)
-    // Contain functions and parameters to set games
+    // The following section contains actions that handle
+    // the "games" st ate. This is the only action that manipulates games.
     setGames: ({ commit }, data) => commit("settingGames", data),
     // Drawer actions
     // Contain parameters to modify the state of the drawer
