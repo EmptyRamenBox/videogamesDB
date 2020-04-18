@@ -13,7 +13,7 @@
         </v-btn>
       </v-list-item>
       <div class="d-flex flex-column justify-center align-center mb-4">
-        <v-list-item justify="center">
+        <v-list-item justify="center" to="/profile">
           <v-list-item-avatar size="160" color="red darken-4">
             <v-icon md>mdi-space-invaders</v-icon>
           </v-list-item-avatar>
@@ -32,7 +32,7 @@
           <v-btn color="red darken-3">LogOut</v-btn>
         </div>
       </v-list-item>
-      <v-list-item v-for="item in items" :key="item.text" link>
+      <v-list-item v-for="item in items" :key="item.text" :to="item.dest">
         <v-list-item-action>
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-action>
@@ -53,10 +53,14 @@ export default {
   data: () => ({
     defaultPicture,
     items: [
-      { icon: "mdi-trending-up", text: "Explore Games" },
-      { icon: "mdi-bookshelf", text: "My Library" },
-      { icon: "mdi-star-box-multiple-outline", text: "Wishlist" },
-      { icon: "mdi-post-outline", text: "Game Blogs" }
+      { icon: "mdi-trending-up", text: "Explore Games", dest: "/" },
+      { icon: "mdi-bookshelf", text: "My Library", dest: "/library" },
+      {
+        icon: "mdi-star-box-multiple-outline",
+        text: "Wishlist",
+        dest: "/wishlist"
+      },
+      { icon: "mdi-post-outline", text: "Game Blogs", dest: "/blog" }
     ]
   }),
   computed: {
