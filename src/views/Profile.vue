@@ -4,7 +4,7 @@
       <v-layout row wrap>
         <v-flex xs12>
           <v-card dark color="primary">
-            <v-card-title>Card Title</v-card-title>
+            <v-card-title>This is the Profile page. Coming soon!</v-card-title>
           </v-card>
         </v-flex>
         <v-flex v-for="i in 2" :key="`6${i}`" xs6>
