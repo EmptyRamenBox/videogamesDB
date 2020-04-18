@@ -54,18 +54,30 @@
         </div>
       </v-list-item>
       <!-- If the user is signed in -->
+      <!-- Give the user access to all the links  -->
       <!--  -->
-      <!--  -->
-      <!-- NOTE: I need to figure out a way to prevent the user from accessing-->
-      <!-- the Library, Wishlist and Game Blogs when he does not have an acct. -->
-      <v-list-item v-for="item in items" :key="item.text" :to="item.dest">
-        <v-list-item-action>
-          <v-icon>{{ item.icon }}</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title>{{ item.text }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
+      <div v-if="user">
+        <v-list-item v-for="item in items" :key="item.text" :to="item.dest">
+          <v-list-item-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>{{ item.text }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </div>
+      <!-- If the user is NOT logged in, -->
+      <!-- then limit the links to the Explore page -->
+      <div v-else>
+        <v-list-item v-for="item in items" :key="item.text" :to="item.dest">
+          <v-list-item-action v-if="item.public">
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content v-if="item.public">
+            <v-list-item-title>{{ item.text }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </div>
     </v-list>
   </v-navigation-drawer>
 </template>
@@ -79,14 +91,30 @@ export default {
   data: () => ({
     defaultPicture,
     items: [
-      { icon: "mdi-trending-up", text: "Explore Games", dest: "/" },
-      { icon: "mdi-bookshelf", text: "My Library", dest: "/library" },
+      {
+        icon: "mdi-trending-up",
+        text: "Explore Games",
+        dest: "/",
+        public: true
+      },
+      {
+        icon: "mdi-bookshelf",
+        text: "My Library",
+        dest: "/library",
+        public: false
+      },
       {
         icon: "mdi-star-box-multiple-outline",
         text: "Wishlist",
-        dest: "/wishlist"
+        dest: "/wishlist",
+        public: false
       },
-      { icon: "mdi-post-outline", text: "Game Blogs", dest: "/blog" }
+      {
+        icon: "mdi-post-outline",
+        text: "Game Blogs",
+        dest: "/blog",
+        public: false
+      }
     ]
   }),
   computed: {
