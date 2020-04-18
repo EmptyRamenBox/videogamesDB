@@ -3,35 +3,61 @@
   <!-- consists of a Vuetify component, that will be used to hold the navigation drawer -->
   <!-- when the user clicks on the navigation drawer icon. -->
   <v-navigation-drawer :value="drawer" app clipped>
-    <v-list class="dense">
+    <v-list class="dense mt-2">
       <v-spacer></v-spacer>
       <v-list-item class="justify-end">
-        <!-- Enable this for devices with small viewports... -->
-        <v-btn @click="drawer ? hideDrawer() : drawer">
+        <v-btn class="d-md-none" @click="drawer ? hideDrawer() : drawer">
           <v-icon small>mdi-arrow-collapse-left</v-icon>
           <v-list-item-title>Hide</v-list-item-title>
         </v-btn>
       </v-list-item>
+      <!-- User Icon -->
+      <!--  -->
       <div class="d-flex flex-column justify-center align-center mb-4">
-        <v-list-item justify="center" to="/profile">
+        <!-- If the user is signed in, -->
+        <!-- Redirect the user to his "profile" page -->
+        <v-list-item v-if="user" justify="center" to="/profile">
+          <!-- For Larger Screens, make the user photo larger -->
+          <v-list-item-avatar class="d-none d-md-flex d-md-none" size="160" color="red darken-4">
+            <v-img :src="`${user.photoURL}`"></v-img>
+          </v-list-item-avatar>
+          <!-- For Smaller Screens and Mobile devices, make the user photo smaller -->
+          <v-list-item-avatar class="d-xs-none d-sm-flex d-md-none" size="120" color="red darken-4">
+            <v-img :src="`${user.photoURL}`"></v-img>
+          </v-list-item-avatar>
+        </v-list-item>
+        <!-- If the user is NOT logged in, -->
+        <!-- Redirect the user to the login page. -->
+        <v-list-item v-else justify="center" to="/login">
           <v-list-item-avatar size="160" color="red darken-4">
-            <v-icon md>mdi-space-invaders</v-icon>
+            <v-icon sm>mdi-space-invaders</v-icon>
           </v-list-item-avatar>
         </v-list-item>
       </div>
-
-      <v-list-item justify="center">
+      <!-- If the user is signed in,  -->
+      <!-- display his details -->
+      <v-list-item v-if="user" justify="center">
         <div class="d-flex flex-column justify-center mb-8">
-          <!-- <div class="pt-4"> -->
-          <!-- <v-avatar size="128" color="red darken-4"> -->
-          <!-- <img :src="defaultPicture" alt="Profile Pic" /> -->
-          <!-- </v-avatar> -->
-          <!-- </div> -->
-          <h1 class="font-weight-regular">Name</h1>
-          <h5 class="font-weight-light mb-4">email</h5>
-          <v-btn color="red darken-3">LogOut</v-btn>
+          <h1 class="font-weight-regular">{{ user.displayName }}</h1>
+          <h5 class="font-weight-light mb-4">{{user.email}}</h5>
+          <v-btn @click="logOut" color="red darken-3">LogOut</v-btn>
         </div>
       </v-list-item>
+      <!-- If the user is NOT logged in, -->
+      <!--  then prompt the user to login -->
+      <v-list-item v-else justify="center">
+        <div class="d-flex flex-column justify-center mb-8">
+          <v-btn to="login" color="primary">
+            Login
+            <v-icon>mdi-login</v-icon>
+          </v-btn>
+        </div>
+      </v-list-item>
+      <!-- If the user is signed in -->
+      <!--  -->
+      <!--  -->
+      <!-- NOTE: I need to figure out a way to prevent the user from accessing-->
+      <!-- the Library, Wishlist and Game Blogs when he does not have an acct. -->
       <v-list-item v-for="item in items" :key="item.text" :to="item.dest">
         <v-list-item-action>
           <v-icon>{{ item.icon }}</v-icon>
@@ -64,12 +90,22 @@ export default {
     ]
   }),
   computed: {
+    user: {
+      get() {
+        return this.$store.getters.getUser;
+      }
+    },
     ...mapGetters({
       drawer: "getDrawer"
     })
   },
   methods: {
-    ...mapActions(["hideDrawer"])
+    logOut() {
+      this.$firebase.auth().signOut();
+      this.setUser("");
+      this.hideDrawer("");
+    },
+    ...mapActions(["hideDrawer", "setUser"])
   }
 };
 </script>
