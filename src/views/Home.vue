@@ -13,7 +13,7 @@
       color="rgba(255,0,0, 0.8)"
       src="../assets/home.png"
       height="300"
-      width="1800"
+      width="1200"
       jumbotron
     >
       <v-row class="mb-6" justify="center" wrap>
@@ -37,7 +37,7 @@
       <!-- ExploreGames Header -->
       <!--  -->
       <v-row justify="space-around" class="title">
-        <h2>Explore Games</h2>
+        <h2>Explore New Games</h2>
       </v-row>
     </v-parallax>
 
@@ -45,8 +45,8 @@
     <!-- ExploreGames GameCards -->
     <!--  -->
     <v-row rows="1" justify-center class="mt-10">
-      <v-col v-for="n in 8" :key="n" cols="12" xs="12" sm="6" md="3">
-        <GameCard />
+      <v-col v-for="game in games" :key="game.id" cols="12" xs="12" sm="6" md="3">
+        <GameCard :game="game" />
       </v-col>
     </v-row>
   </v-col>
@@ -59,6 +59,38 @@ export default {
   name: "Home",
   components: {
     GameCard
+  },
+  // As soon as the page is created,
+  // the Home.vue will call the following functions..
+  created() {
+    this.$store.dispatch("getGamesForHome", []);
+    // this.games.get;
+  },
+  computed: {
+    games: {
+      get() {
+        return this.$store.getters.getGames;
+      }
+    }
+    // Soon to be deprecated...
+    // Methods
+    // Only pertain to the Home.vue
+    // methods: {
+    //   async getGames() {
+    //     var today = new Date();
+
+    //     var dd = String(today.getDate()).padStart(2, "0");
+    //     var mm = String(today.getMonth() + 1).padStart(2, "0");
+    //     var yyyy = today.getFullYear();
+    //     today = yyyy + "-" + mm + "-" + dd;
+    //     const gamesHome = await this.$axios(
+    //       `games?dates=2020-01-01,${today}&ordering=-added`
+    //     );
+
+    //     this.gamesHome = gamesHome.data?.results;
+
+    //     console.log(gamesHome.data);
+    //   }
   }
 };
 </script>
