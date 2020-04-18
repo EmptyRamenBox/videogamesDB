@@ -14,7 +14,7 @@
       <!-- Column #2: Content -->
       <!-- Login Card -->
       <v-col cols="12" xs="12" sm="6" md="4">
-        <v-card color="teal " outlined min-width="220" max-width="320" min-height="500">
+        <v-card color="secondary " outlined min-width="220" max-width="320" min-height="500">
           <v-card-title class="mt-10 ml-8">
             <h5>EmptyRamenBox's</h5>
             <h1>Video Games DB</h1>
