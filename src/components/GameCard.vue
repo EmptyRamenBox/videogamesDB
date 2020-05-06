@@ -7,8 +7,10 @@
   <v-card color="secondary" class="mx-auto" min-height="420" max-width="380">
     <!-- Game Cover -->
     <!--  -->
+    <!-- If the API returns an image, -->
+    <!-- Then use the image provided by the API -->
     <v-img
-      v-if="`!${game.background_image}`"
+      v-if="game.background_image"
       color="primary"
       fill
       class="white--text align-end"
@@ -17,9 +19,21 @@
       :src="`${game.background_image}`"
     >
       <!-- Game Title -->
-      <v-card-title class="display-1 font-weight-light">{{
-        game.name
-      }}</v-card-title>
+      <v-card-title class="display-1 font-weight-light">{{game.name}}</v-card-title>
+    </v-img>
+    <!-- If the API does NOT return an image,  -->
+    <!-- then use a placeholder for your image -->
+    <v-img
+      v-if="!game.background_image"
+      color="primary"
+      fill
+      class="white--text align-end"
+      gradient="to top , rgba(10,10,80,.9), rgba(240,240,240,.10)"
+      height="200"
+      src="../assets/logo.png"
+    >
+      <!-- Game Title -->
+      <v-card-title class="display-1 font-weight-light">{{game.name}}</v-card-title>
     </v-img>
     <!-- Game Description -->
     <v-card-text class="text--primary subtitle-1">
@@ -30,18 +44,8 @@
           <span>{{ game.released }}</span>
         </h3>
       </div>
-      <!-- Publisher: Looks like the API can't release this... -->
-      <!-- <div class="mt-2 font-weight-bold ">
-        Developers:
-        <span>{{ game.developers }}</span>
-      </div> -->
-      <!-- Developer -->
-      <!-- <div class="mt-0">
-        Developer:
-        <span></span>
-      </div>-->
       <!-- Systems -->
-      <div class="mt-0  ">
+      <div class="mt-0">
         <span class="font-weight-bold">Platforms:</span>
         <v-chip
           label
@@ -56,7 +60,7 @@
       </div>
       <!-- Genre -->
       <div class="mt-2">
-        <span class="font-weight-bold mr-2">Genre: </span>
+        <span class="font-weight-bold mr-2">Genre:</span>
         <v-chip
           label
           class="ml-2 mt-2 mr-2"
@@ -69,10 +73,10 @@
         </v-chip>
       </div>
       <div class="mt-2">
-        <span class="font-weight-bold mr-2">Game Rating: </span>
+        <span class="font-weight-bold mr-2">Game Rating:</span>
         <v-chip label color="amber" class="black--text">
-          <span class="title font-weight-bold">{{ game.rating }}</span
-          ><span> / 5</span>
+          <span class="title font-weight-bold">{{ game.rating }}</span>
+          <span>/ 5</span>
           <!-- {{ genres.find(g => g.id === genre.id).name }} -->
         </v-chip>
       </div>
@@ -87,8 +91,8 @@ export default {
   props: {
     game: {
       type: Object,
-      default: () => {},
-    },
+      default: () => {}
+    }
   },
   // 2. Data elements
   data() {
@@ -114,6 +118,6 @@ export default {
     //   this.platforms = platforms.data?.results;
     //   console.log(this.platforms);
     // }
-  },
+  }
 };
 </script>
