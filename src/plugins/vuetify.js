@@ -15,22 +15,23 @@ const vuetify = new Vuetify({
       xs: 340,
       sm: 540,
       md: 800,
-      lg: 1280
+      lg: 1280,
     },
-    scrollBarWidth: 24
+    scrollBarWidth: 24,
   },
   theme: {
     themes: {
       light: {
         primary: colors.indigo.accent3,
         secondary: colors.amber.lighten1,
+        tertiary: colors.teal.darken1,
         accent: colors.red.black,
         error: colors.deepOrange.darken3,
-        background: colors.grey.darken3
+        background: colors.grey.darken3,
       },
-      dark: {}
-    }
-  }
+      dark: {},
+    },
+  },
 });
 
 export default vuetify;

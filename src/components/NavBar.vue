@@ -1,13 +1,5 @@
 <template>
-  <v-app-bar
-    dense
-    clipped-left
-    app
-    color="primary"
-    max-height="45"
-    fluid
-    class="body-1"
-  >
+  <v-app-bar dense clipped-left app color="primary" max-height="45" fluid class="body-1">
     <!-- Left Side -->
     <!--  -->
     <!--  -->
@@ -42,22 +34,21 @@
     <!--  -->
 
     <!-- Search Button -->
-    <v-col
-      cols="8"
-      justify="end"
-      xs="2"
-      sm="2"
-      md="3"
-      lg="2"
-      class="pl-2 ml-4"
-      no-gutters
-    >
+    <v-col cols="8" justify="end" xs="2" sm="2" md="3" lg="2" class="pl-2 ml-4" no-gutters>
       <v-row rows="1">
-        <div class="pr-2">
+        <div v-if="user" class="pr-2">
+          <v-spacer></v-spacer>
+        </div>
+        <div v-else class="pr-2">
           <v-btn icon to="/login">
             <v-icon>mdi-login</v-icon>
           </v-btn>
         </div>
+        <!-- <div v-else class="pr-2"> -->
+        <!-- <v-btn icon to="/login"> -->
+        <!-- <v-icon>Logout</v-icon> -->
+        <!-- </v-btn> -->
+        <!-- </div> -->
         <div class="pr-2">
           <v-btn icon to="/search">
             <v-icon>mdi-magnify</v-icon>
@@ -75,6 +66,11 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "NavBar",
   computed: {
+    user: {
+      get() {
+        return this.$store.getters.getUser;
+      }
+    },
     ...mapGetters({
       drawer: "getDrawer"
     })

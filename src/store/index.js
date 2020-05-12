@@ -23,7 +23,10 @@ export default new Vuex.Store({
     // getGames returns the search results for games
     getGames: (state) => state.games,
     getHomeGames: (state) => state.games,
+    // the following returns data for the Game view
+    getGame: (state) => (id) => state.games.find((game) => game.id === id),
   },
+
   mutations: {
     // Drawer mutations
     changeDrawer: (state, status) => (state.drawer = status),

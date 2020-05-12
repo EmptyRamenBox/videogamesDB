@@ -15,51 +15,51 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
     path: "/login",
     name: "Login",
-    component: Login
+    component: Login,
   },
   {
     path: "/search",
     name: "Search",
-    component: Search
+    component: Search,
   },
   {
-    path: "/game",
+    path: "/games/:id",
     name: "Game",
-    component: Game
+    component: Game,
   },
   // Experimental: Just to test Views
   {
     path: "/library",
     name: "Library",
-    component: Library
+    component: Library,
   },
   {
     path: "/profile",
     name: "Profile",
-    component: Profile
+    component: Profile,
   },
   {
     path: "/blog",
     name: "Blog",
-    component: Blog
+    component: Blog,
   },
 
   {
     path: "/wishlist",
     name: "Wishlist",
-    component: Wishlist
-  }
+    component: Wishlist,
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;

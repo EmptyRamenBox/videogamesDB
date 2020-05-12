@@ -4,23 +4,26 @@
   <!-- summarizing game data for display in the Search page and  -->
   <!-- Explore/Home pages. -->
   <!-- eslint-disable-next-line prettier/prettier -->
+
   <v-card color="secondary" class="mx-auto" min-height="420" max-width="380">
     <!-- Game Cover -->
     <!--  -->
     <!-- If the API returns an image, -->
     <!-- Then use the image provided by the API -->
-    <v-img
-      v-if="game.background_image"
-      color="primary"
-      fill
-      class="white--text align-end"
-      gradient="to top , rgba(10,10,80,.9), rgba(240,240,240,.10)"
-      height="200"
-      :src="`${game.background_image}`"
-    >
-      <!-- Game Title -->
-      <v-card-title class="display-1 font-weight-light">{{game.name}}</v-card-title>
-    </v-img>
+    <router-link :to="`/games/${game.id}`" class="w-full ease-in-out duration-300 hover:scale-110">
+      <v-img
+        v-if="game.background_image"
+        color="primary"
+        fill
+        class="white--text align-end"
+        gradient="to top , rgba(10,10,80,.9), rgba(240,240,240,.10)"
+        height="200"
+        :src="`${game.background_image}`"
+      >
+        <!-- Game Title -->
+        <v-card-title class="display-1 font-weight-light">{{game.name}}</v-card-title>
+      </v-img>
+    </router-link>
     <!-- If the API does NOT return an image,  -->
     <!-- then use a placeholder for your image -->
     <v-img
