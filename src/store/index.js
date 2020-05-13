@@ -58,7 +58,6 @@ export default new Vuex.Store({
       var yyyy = today.getFullYear();
       today = yyyy + "-" + mm + "-" + dd;
       const homeGames = await home(today);
-      console.log(homeGames.data);
       homeGames.data?.results
         ? dispatch("setGames", homeGames.data.results)
         : dispatch("setNotFound", true) && dispatch("setGames", []);

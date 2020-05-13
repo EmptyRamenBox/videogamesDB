@@ -70,27 +70,12 @@ export default {
     games: {
       get() {
         return this.$store.getters.getGames;
+      },
+      set(value) {
+        this.$store.dispatch("setGames", value);
       }
     }
-    // Soon to be deprecated...
-    // Methods
-    // Only pertain to the Home.vue
-    // methods: {
-    //   async getGames() {
-    //     var today = new Date();
-
-    //     var dd = String(today.getDate()).padStart(2, "0");
-    //     var mm = String(today.getMonth() + 1).padStart(2, "0");
-    //     var yyyy = today.getFullYear();
-    //     today = yyyy + "-" + mm + "-" + dd;
-    //     const gamesHome = await this.$axios(
-    //       `games?dates=2020-01-01,${today}&ordering=-added`
-    //     );
-
-    //     this.gamesHome = gamesHome.data?.results;
-
-    //     console.log(gamesHome.data);
-    //   }
-  }
+  },
+  methods: {}
 };
 </script>
