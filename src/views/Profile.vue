@@ -11,14 +11,14 @@
       <v-row>
         <v-col class="ml-4" cols="12" xs="6" sm="4" md="4" lg="3">
           <v-card height="900" color="primary" class="m-0 pt-6 pb-2">
-            <v-card-title class="justify-center display-3">Home</v-card-title>
+            <v-card-title class="justify-center display-3">Profile</v-card-title>
           </v-card>
         </v-col>
         <!-- v-row -->
 
         <v-col class="ml-4" cols="12" xs="6" sm="8" md="6" lg="8">
           <v-card height="900" color="primary" class="m-0 pt-6 pb-2">
-            <v-card-title class="justify-center display-3">Home</v-card-title>
+            <v-card-title class="justify-center display-3">Profile Details</v-card-title>
           </v-card>
         </v-col>
       </v-row>
